@@ -191,7 +191,7 @@ class Podium extends Module implements BootstrapInterface
     public function init()
     {
         parent::init();
-        $this->setAliases(['@podium' => '@vendor/bizley/podium/src']);
+        $this->setAliases(['@podium' => '@vendor/ezoterik/podium/src']);
         if (Yii::$app instanceof WebApplication) {
             $this->podiumComponent->registerComponents();
             $this->layout = 'main';
