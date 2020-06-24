@@ -63,7 +63,7 @@ if (!empty($items)) {
             'handleLabel' => '<span class="btn btn-default btn-xs pull-left" style="margin-right:10px"><span class="glyphicon glyphicon-move"></span></span> ',
             'items' => $items,
             'pluginEvents' => [
-                'sortupdate' => 'function(e, ui) { $.post(\'' . Url::to(['admin/sort-forum']) . '\', {id:ui.item.find(\'.podium-forum\').data(\'id\'), category:ui.item.find(\'.podium-forum\').data(\'category\'),new:ui.item.index()}).done(function(data){ $(\'#podiumSortInfo\').html(data); }).fail(function(){ $(\'#podiumSortInfo\').html(\'<span class="text-danger">' . Yii::t('podium/view', 'Sorry! There was some error while changing the order of the forums.') . '</span>\'); }); }',
+                'sortupdate' => 'function(e) {var item = $(e.originalEvent.detail.item); $.post(\'' . Url::to(['admin/sort-forum']) . '\', {id:item.find(\'.podium-forum\').data(\'id\'), category:item.find(\'.podium-forum\').data(\'category\'),new:item.index()}).done(function(data){ $(\'#podiumSortInfo\').html(data); }).fail(function(){ $(\'#podiumSortInfo\').html(\'<span class="text-danger">' . Yii::t('podium/view', 'Sorry! There was some error while changing the order of the forums.') . '</span>\'); }); }',
             ]
         ]); ?>
 <?php endif; ?>

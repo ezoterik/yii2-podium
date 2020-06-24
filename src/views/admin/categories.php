@@ -46,7 +46,7 @@ if (!empty($items)) {
             'handleLabel'  => '<span class="btn btn-default btn-xs pull-left" style="margin-right:10px"><span class="glyphicon glyphicon-move"></span></span> ',
             'items'        => $items,
             'pluginEvents' => [
-                'sortupdate' => 'function(e, ui) { $.post(\'' . Url::to(['admin/sort-category']) . '\', {id:ui.item.find(\'.podium-forum\').data(\'id\'), new:ui.item.index()}).done(function(data){ $(\'#podiumSortInfo\').html(data); }).fail(function(){ $(\'#podiumSortInfo\').html(\'<span class="text-danger">' . Yii::t('podium/view', 'Sorry! There was some error while changing the order of the categories.') . '</span>\'); }); }',
+                'sortupdate' => 'function(e) {var item = $(e.originalEvent.detail.item); $.post(\'' . Url::to(['admin/sort-category']) . '\', {id:item.find(\'.podium-forum\').data(\'id\'), new:item.index()}).done(function(data){ $(\'#podiumSortInfo\').html(data); }).fail(function(){ $(\'#podiumSortInfo\').html(\'<span class="text-danger">' . Yii::t('podium/view', 'Sorry! There was some error while changing the order of the categories.') . '</span>\'); }); }',
             ]
         ]); ?>
 <?php endif; ?>
