@@ -55,7 +55,7 @@ if (Podium::getInstance()->user->isGuest) {
         'url' => ['profile/index'],
         'items' => [
             ['label' => Yii::t('podium/view', 'My Profile'), 'url' => ['profile/index']],
-            ['label' => Yii::t('podium/view', 'Account Details'), 'url' => ['profile/details']],
+            ['label' => Yii::t('podium/view', 'Account Details'), 'url' => ['profile/details'], 'visible' => ($podiumModule->userComponent === true)],
             ['label' => Yii::t('podium/view', 'Forum Details'), 'url' => ['profile/forum']],
             ['label' => Yii::t('podium/view', 'Subscriptions'), 'url' => ['profile/subscriptions']],
         ]
