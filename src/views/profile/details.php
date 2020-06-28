@@ -43,19 +43,18 @@ if (Podium::getInstance()->userComponent === true) {
                             ->label(Yii::t('podium/view', 'Username')) ?>
                         </div>
                     </div>
+<?php if (Podium::getInstance()->userComponent === true): ?>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <button class="btn btn-warning btn-block <?= !empty($model->new_email) ? 'hide' : '' ?>" id="show-email"><span class="glyphicon glyphicon-envelope"></span> <?= Yii::t('podium/view', 'Change e-mail address') ?></button>
                             </div>
                         </div>
-<?php if (Podium::getInstance()->userComponent === true): ?>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <button class="btn btn-warning btn-block <?= !empty($model->newPassword) ? 'hide' : '' ?>" id="show-password"><span class="glyphicon glyphicon-lock"></span> <?= Yii::t('podium/view', 'Change password') ?></button>
                             </div>
                         </div>
-<?php endif; ?>
                     </div>
                     <div class="row <?= empty($model->new_email) ? 'hide' : '' ?>" id="details-email">
                         <div class="col-sm-12">
@@ -71,7 +70,6 @@ if (Podium::getInstance()->userComponent === true) {
                             ])->label(Yii::t('podium/view', 'New Podium e-mail')) ?>
                         </div>
                     </div>
-<?php if (Podium::getInstance()->userComponent === true): ?>
                     <div id="details-password" class="<?= empty($model->newPassword) ? 'hide' : '' ?>">
                         <div class="row">
                             <div class="col-sm-12">
@@ -97,7 +95,6 @@ if (Podium::getInstance()->userComponent === true) {
                             </div>
                         </div>
                     </div>
-<?php endif; ?>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
@@ -111,6 +108,7 @@ if (Podium::getInstance()->userComponent === true) {
                         </div>
                     </div>
                 </div>
+<?php endif; ?>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
