@@ -96,6 +96,10 @@ class Installation extends Maintenance
             if ($userNameField !== null && empty($inheritedUser->$userNameField)) {
                 throw new Exception('Can not find administrator username!');
             }
+            $userEmailField = $this->module->userEmailField;
+            if ($userEmailField !== null && empty($inheritedUser->$userEmailField)) {
+                throw new Exception('Can not find administrator email!');
+            }
         } catch (Exception $e) {
             return $this->returnWarning(Yii::t('podium/flash', 'Cannot find inherited user of given ID. No administrator privileges have been set.'));
         }
@@ -107,6 +111,7 @@ class Installation extends Maintenance
             $admin->setAttributes([
                 'inherited_id' => $this->module->adminId,
                 'username' => $userNameField ? $inheritedUser->$userNameField : self::DEFAULT_USERNAME,
+                'email' => $userEmailField ? $inheritedUser->$userEmailField : '',
                 'status' => User::STATUS_ACTIVE,
                 'role' => User::ROLE_ADMIN,
             ], false);

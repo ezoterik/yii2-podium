@@ -713,6 +713,8 @@ class User extends UserActiveRecord
     public static function createInheritedAccount()
     {
         if (!Podium::getInstance()->user->isGuest) {
+            $userEmailField = Podium::getInstance()->userEmailField;
+
             $transaction = static::getDb()->beginTransaction();
             try {
                 $newUser = new static;
@@ -721,6 +723,7 @@ class User extends UserActiveRecord
                 $newUser->status = self::STATUS_ACTIVE;
                 $newUser->role = self::ROLE_MEMBER;
                 $newUser->generateUsername();
+                $newUser->email = Podium::getInstance()->user->identity->$userEmailField;
                 if (!$newUser->save()) {
                     throw new Exception('Account creating error');
                 }
@@ -750,21 +753,29 @@ class User extends UserActiveRecord
     {
         if (!Podium::getInstance()->user->isGuest) {
             $userNameField = Podium::getInstance()->userNameField;
+            $userEmailField = Podium::getInstance()->userEmailField;
+
             if ($userNameField === null) {
                 return true;
             }
             if (empty(Podium::getInstance()->user->identity->$userNameField)) {
                 throw new InvalidConfigException("Non-existing or empty '$userNameField' field!");
             }
+            if (empty(Podium::getInstance()->user->identity->$userEmailField)) {
+                throw new InvalidConfigException("Non-existing or empty '$userEmailField' field!");
+            }
+
+            /** @var User|null $savedUser */
             $savedUser = static::find()->where(['inherited_id' => Podium::getInstance()->user->id])->limit(1)->one();
             if (empty($savedUser)) {
                 throw new InvalidConfigException('Can not find inherited account in database!');
             }
-            if ($savedUser->username === Podium::getInstance()->user->identity->$userNameField) {
-                return true;
-            }
+
             $savedUser->scenario = 'installation';
+
             $savedUser->username = Podium::getInstance()->user->identity->$userNameField;
+            $savedUser->email = Podium::getInstance()->user->identity->$userEmailField;
+
             if ($savedUser->save()) {
                 Log::info('Inherited account updated', $savedUser->id, __METHOD__);
                 return true;

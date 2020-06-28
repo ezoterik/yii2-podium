@@ -133,6 +133,13 @@ class Podium extends Module implements BootstrapInterface
     public $userNameField;
 
     /**
+     * @var string Module inherited email field name.
+     * When provided value of this field is used as default Podium email and can not be changed from within Podium.
+     * If you want to use it and your User name's model field is 'email' set userEmailField to 'email'.
+     */
+    public $userEmailField;
+
+    /**
      * @var string Default route for Podium.
      * @since 0.2
      */
