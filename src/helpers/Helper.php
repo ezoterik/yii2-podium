@@ -88,7 +88,7 @@ class Helper
                     'HTML.Allowed' => 'p[class],br,b,strong,i,em,u,s,a[href|target],ul,li,ol,span[style|class],h1,h2,h3,h4,h5,h6,sub,sup,blockquote,pre[class],img[src|alt],iframe[class|frameborder|src],hr',
                     'CSS.AllowedProperties' => 'color,background-color',
                     'HTML.SafeIframe' => true,
-                    'URI.SafeIframeRegexp' => '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
+                    'URI.SafeIframeRegexp' => '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/|hexsystems\.com\.au/)%',
                     'Attr.AllowedFrameTargets' => ['_blank']
                 ];
                 break;
@@ -97,6 +97,7 @@ class Helper
                     'HTML.Allowed' => 'p,br,b,strong,i,em,u,s,a[href|target],ul,li,ol,hr,h1,h2,h3,h4,h5,h6,span,pre,code,table,tr,td,th,blockquote,img[src|alt]',
                     'Attr.AllowedFrameTargets' => ['_blank']
                 ];
+                break;
             case 'default':
             default:
                 $config = [
