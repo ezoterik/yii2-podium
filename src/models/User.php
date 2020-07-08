@@ -723,7 +723,11 @@ class User extends UserActiveRecord
                 $newUser->status = self::STATUS_ACTIVE;
                 $newUser->role = self::ROLE_MEMBER;
                 $newUser->generateUsername();
-                $newUser->email = Podium::getInstance()->user->identity->$userEmailField;
+
+                if ($userEmailField) {
+                    $newUser->email = Podium::getInstance()->user->identity->$userEmailField;
+                }
+
                 if (!$newUser->save()) {
                     throw new Exception('Account creating error');
                 }
@@ -761,9 +765,6 @@ class User extends UserActiveRecord
             if (empty(Podium::getInstance()->user->identity->$userNameField)) {
                 throw new InvalidConfigException("Non-existing or empty '$userNameField' field!");
             }
-            if (empty(Podium::getInstance()->user->identity->$userEmailField)) {
-                throw new InvalidConfigException("Non-existing or empty '$userEmailField' field!");
-            }
 
             /** @var User|null $savedUser */
             $savedUser = static::find()->where(['inherited_id' => Podium::getInstance()->user->id])->limit(1)->one();
@@ -774,7 +775,10 @@ class User extends UserActiveRecord
             $savedUser->scenario = 'installation';
 
             $savedUser->username = Podium::getInstance()->user->identity->$userNameField;
-            $savedUser->email = Podium::getInstance()->user->identity->$userEmailField;
+
+            if ($userEmailField) {
+                $savedUser->email = Podium::getInstance()->user->identity->$userEmailField;
+            }
 
             if ($savedUser->save()) {
                 Log::info('Inherited account updated', $savedUser->id, __METHOD__);
