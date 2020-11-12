@@ -73,8 +73,8 @@ class QueueController extends Controller
     {
         try {
             if (parent::beforeAction($action)) {
-                $this->db = !$this->db ? Podium::getInstance()->getDb() : Instance::ensure($this->db, Connection::className());
-                $this->mailer = Instance::ensure($this->mailer, BaseMailer::className());
+                $this->db = !$this->db ? Podium::getInstance()->getDb() : Instance::ensure($this->db, Connection::class);
+                $this->mailer = Instance::ensure($this->mailer, BaseMailer::class);
                 return true;
             }
         } catch (Exception $e) {

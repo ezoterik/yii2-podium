@@ -33,7 +33,7 @@ $this->registerJs("$('[data-toggle=\"popover\"]').popover();");
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <?= $form->field($model, 'timezone')->widget(Select2::classname(), [
+                            <?= $form->field($model, 'timezone')->widget(Select2::class, [
                                 'data'          => Helper::timeZones(),
                                 'theme'         => Select2::THEME_KRAJEE,
                                 'showToggleAll' => false,
@@ -58,7 +58,7 @@ $this->registerJs("$('[data-toggle=\"popover\"]').popover();");
                             <?= $form
                                 ->field($model, 'signature')
                                 ->label(Yii::t('podium/view', 'Signature under each post'))
-                                ->widget(EditorBasic::className()) ?>
+                                ->widget(EditorBasic::class) ?>
                         </div>
                     </div>
                     <div class="row">
@@ -77,7 +77,7 @@ $this->registerJs("$('[data-toggle=\"popover\"]').popover();");
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <?= $form->field($model, 'image')->label(Yii::t('podium/view', 'Or upload your own avatar'))->widget(FileInput::className(), [
+                            <?= $form->field($model, 'image')->label(Yii::t('podium/view', 'Or upload your own avatar'))->widget(FileInput::class, [
                                 'options'       => ['accept' => 'image/*'],
                                 'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'jpeg', 'gif', 'png']]
                             ])->hint(Yii::t('podium/view', 'Square avatars look best.') . '<br>' . Yii::t('podium/view', 'Maximum size is {size}, {width}x{height} pixels; png, jpg and gif images only.', ['size' => ceil(Meta::MAX_SIZE / 1024) . 'kB', 'width' => Meta::MAX_WIDTH, 'height' => Meta::MAX_HEIGHT])) ?>

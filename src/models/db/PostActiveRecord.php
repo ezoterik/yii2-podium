@@ -20,15 +20,15 @@ use yii\helpers\HtmlPurifier;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
+ * @property int $id
  * @property string $content
- * @property integer $thread_id
- * @property integer $forum_id
- * @property integer $author_id
- * @property integer $likes
- * @property integer $dislikes
- * @property integer $updated_at
- * @property integer $created_at
+ * @property int $thread_id
+ * @property int $forum_id
+ * @property int $author_id
+ * @property int $likes
+ * @property int $dislikes
+ * @property int $updated_at
+ * @property int $created_at
  */
 class PostActiveRecord extends ActiveRecord
 {
@@ -55,7 +55,7 @@ class PostActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**
@@ -86,7 +86,7 @@ class PostActiveRecord extends ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasOne(User::class, ['id' => 'author_id']);
     }
 
     /**
@@ -95,7 +95,7 @@ class PostActiveRecord extends ActiveRecord
      */
     public function getThread()
     {
-        return $this->hasOne(Thread::className(), ['id' => 'thread_id']);
+        return $this->hasOne(Thread::class, ['id' => 'thread_id']);
     }
 
     /**
@@ -104,7 +104,7 @@ class PostActiveRecord extends ActiveRecord
      */
     public function getForum()
     {
-        return $this->hasOne(Forum::className(), ['id' => 'forum_id']);
+        return $this->hasOne(Forum::class, ['id' => 'forum_id']);
     }
 
     /**
@@ -113,6 +113,6 @@ class PostActiveRecord extends ActiveRecord
      */
     public function getThumb()
     {
-        return $this->hasOne(PostThumb::className(), ['post_id' => 'id'])->where(['user_id' => User::loggedId()]);
+        return $this->hasOne(PostThumb::class, ['post_id' => 'id'])->where(['user_id' => User::loggedId()]);
     }
 }

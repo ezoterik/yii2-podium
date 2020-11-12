@@ -30,7 +30,7 @@ class AdminController extends AdminForumController
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'ruleConfig' => ['class' => 'bizley\podium\filters\PermissionDeniedRule'],
                 'rules' => [
                     ['class' => 'bizley\podium\filters\InstallRule'],

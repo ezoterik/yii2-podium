@@ -36,7 +36,7 @@ class ForumController extends ForumPostController
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'ruleConfig' => ['class' => 'bizley\podium\filters\LoginRequiredRule'],
                 'rules' => [
                     ['class' => 'bizley\podium\filters\InstallRule'],

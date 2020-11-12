@@ -13,10 +13,10 @@ use yii\db\ActiveQuery;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $thread_id
- * @property integer $post_seen
+ * @property int $id
+ * @property int $user_id
+ * @property int $thread_id
+ * @property int $post_seen
  *
  * @property User $user
  * @property Thread $thread
@@ -37,7 +37,7 @@ class SubscriptionActiveRecord extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     /**
@@ -46,6 +46,6 @@ class SubscriptionActiveRecord extends ActiveRecord
      */
     public function getThread()
     {
-        return $this->hasOne(Thread::className(), ['id' => 'thread_id']);
+        return $this->hasOne(Thread::class, ['id' => 'thread_id']);
     }
 }

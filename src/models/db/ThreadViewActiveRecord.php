@@ -10,11 +10,11 @@ use bizley\podium\db\ActiveRecord;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $thread_id
- * @property integer $new_last_seen
- * @property integer $edited_last_seen
+ * @property int $id
+ * @property int $user_id
+ * @property int $thread_id
+ * @property int $new_last_seen
+ * @property int $edited_last_seen
  */
 class ThreadViewActiveRecord extends ActiveRecord
 {

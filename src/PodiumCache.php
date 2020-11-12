@@ -55,7 +55,7 @@ class PodiumCache extends Object
      */
     public function getEngine()
     {
-        return Instance::ensure(Podium::getInstance()->cache, Cache::className());
+        return Instance::ensure(Podium::getInstance()->cache, Cache::class);
     }
 
     /**

@@ -203,7 +203,7 @@ class Podium extends Module implements BootstrapInterface
             $this->podiumComponent->registerComponents();
             $this->layout = 'main';
             if (!is_string($this->slugGenerator)) {
-                $this->slugGenerator = PodiumSluggableBehavior::className();
+                $this->slugGenerator = PodiumSluggableBehavior::class;
             }
         } else {
             $this->podiumComponent->registerConsoleComponents();

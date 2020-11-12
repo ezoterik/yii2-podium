@@ -30,7 +30,7 @@ class AccountController extends BaseController
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'denyCallback' => function ($rule, $action) {
                     return $this->module->goPodium();
                 },

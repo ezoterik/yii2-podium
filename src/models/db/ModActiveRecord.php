@@ -11,9 +11,9 @@ use yii\db\ActiveQuery;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $forum_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $forum_id
  */
 class ModActiveRecord extends ActiveRecord
 {
@@ -31,6 +31,6 @@ class ModActiveRecord extends ActiveRecord
      */
     public function getForum()
     {
-        return $this->hasOne(static::className(), ['id' => 'forum_id']);
+        return $this->hasOne(static::class, ['id' => 'forum_id']);
     }
 }

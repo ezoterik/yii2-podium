@@ -43,7 +43,7 @@ $fieldLayoutShort = [
     ])->checkbox(); ?>
 </div>
 <div class="row">
-    <?= $form->field($model, $pollEnd, $fieldLayoutShort)->widget(DatePicker::classname(), [
+    <?= $form->field($model, $pollEnd, $fieldLayoutShort)->widget(DatePicker::class, [
         'removeButton' => false, 'pluginOptions' => ['autoclose' => true, 'format' => 'yyyy-mm-dd']
     ]); ?>
 </div>

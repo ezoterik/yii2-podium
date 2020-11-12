@@ -39,7 +39,7 @@ $this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
 <?php else: ?>
 <?php if (!empty($friends)): ?>
                 <div class="col-md-4">
-                    <?= $form->field($model, 'friendsId[]')->widget(Select2::classname(), [
+                    <?= $form->field($model, 'friendsId[]')->widget(Select2::class, [
                             'options'       => ['placeholder' => Yii::t('podium/view', 'Select a friend...')],
                             'theme'         => Select2::THEME_KRAJEE,
                             'showToggleAll' => false,
@@ -56,7 +56,7 @@ $this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
 <?php else: ?>
                 <div class="col-md-9">
 <?php endif; ?>
-                    <?= $form->field($model, 'receiversId[]')->widget(Select2::classname(), [
+                    <?= $form->field($model, 'receiversId[]')->widget(Select2::class, [
                             'options'       => ['placeholder' => Yii::t('podium/view', 'Select a member...')],
                             'theme'         => Select2::THEME_KRAJEE,
                             'showToggleAll' => false,
@@ -84,7 +84,7 @@ $this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
             <div class="row">
                 <div class="col-md-3 text-right"><p class="form-control-static"><?= Yii::t('podium/view', 'Message Content') ?></p></div>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::className()) ?>
+                    <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::class) ?>
                 </div>
             </div>
             <div class="row">

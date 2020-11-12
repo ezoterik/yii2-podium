@@ -132,7 +132,7 @@ class InstallationTest extends Unit
 
     public function testCreateTable()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['createTableTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['createTableTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_SUCCESS);
@@ -146,7 +146,7 @@ class InstallationTest extends Unit
      */
     public function testAddColumn()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['addColumnTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['addColumnTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_SUCCESS);
@@ -160,7 +160,7 @@ class InstallationTest extends Unit
      */
     public function testDropColumn()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['dropColumnTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['dropColumnTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_WARNING);
@@ -174,7 +174,7 @@ class InstallationTest extends Unit
      */
     public function testAddIndex()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['addIndexTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['addIndexTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_SUCCESS);
@@ -187,7 +187,7 @@ class InstallationTest extends Unit
      */
     public function testDropIndex()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['dropIndexTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['dropIndexTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_WARNING);
@@ -200,7 +200,7 @@ class InstallationTest extends Unit
      */
     public function testAddForeign()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['addForeignTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['addForeignTest']]);
         $install->db->createCommand()->createTable('{{%podium_test_foreign}}', [
             'id' => Schema::TYPE_PK,
             'level' => Schema::TYPE_INTEGER
@@ -217,7 +217,7 @@ class InstallationTest extends Unit
      */
     public function testDropForeign()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['dropForeignTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['dropForeignTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_WARNING);
@@ -231,7 +231,7 @@ class InstallationTest extends Unit
      */
     public function testAlterColumn()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['alterColumnTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['alterColumnTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_SUCCESS);
@@ -244,7 +244,7 @@ class InstallationTest extends Unit
      */
     public function testRenameColumn()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['renameColumnTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['renameColumnTest']]);
         $result = $install->nextStep();
         expect($result['drop'])->equals(false);
         expect($result['type'])->equals(Installation::TYPE_SUCCESS);
@@ -260,7 +260,7 @@ class InstallationTest extends Unit
      */
     public function testDropTable()
     {
-        $install = Stub::construct(Installation::className(), [], ['_steps' => $this->steps['createTableTest']]);
+        $install = Stub::construct(Installation::class, [], ['_steps' => $this->steps['createTableTest']]);
         $result = $install->nextDrop();
         expect_that($result['drop']);
         expect($result['type'])->equals(Installation::TYPE_WARNING);

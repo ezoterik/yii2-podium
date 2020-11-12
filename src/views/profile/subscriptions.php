@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider'   => $dataProvider,
     'columns' => [
         [
-            'class' => CheckboxColumn::className(),
+            'class' => CheckboxColumn::class,
             'headerOptions' => ['class' => 'col-sm-1 text-center'],
             'contentOptions' => ['class' => 'col-sm-1 text-center'],
             'checkboxOptions' => function($model) {
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             },
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{mark} {delete}',
             'buttons' => [
                 'mark' => function($url, $model) {

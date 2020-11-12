@@ -66,7 +66,7 @@ class Maintenance extends SchemaOperation
     public function init()
     {
         parent::init();
-        $this->authManager = Instance::ensure($this->module->rbac, DbManager::className());
+        $this->authManager = Instance::ensure($this->module->rbac, DbManager::class);
     }
 
     /**

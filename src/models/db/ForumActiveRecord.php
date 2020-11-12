@@ -17,17 +17,17 @@ use yii\helpers\HtmlPurifier;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $category_id
+ * @property int $id
+ * @property int $category_id
  * @property string $name
  * @property string $sub
  * @property string $slug
  * @property string $keywords
  * @property string $description
- * @property integer $visible
- * @property integer $sort
- * @property integer $updated_at
- * @property integer $created_at
+ * @property int $visible
+ * @property int $sort
+ * @property int $updated_at
+ * @property int $created_at
  */
 class ForumActiveRecord extends ActiveRecord
 {
@@ -45,7 +45,7 @@ class ForumActiveRecord extends ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
             [
                 'class' => Podium::getInstance()->slugGenerator,
                 'attribute' => 'name',
@@ -75,7 +75,7 @@ class ForumActiveRecord extends ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
     /**
@@ -84,6 +84,6 @@ class ForumActiveRecord extends ActiveRecord
      */
     public function getLatest()
     {
-        return $this->hasOne(Post::className(), ['forum_id' => 'id'])->orderBy(['id' => SORT_DESC]);
+        return $this->hasOne(Post::class, ['forum_id' => 'id'])->orderBy(['id' => SORT_DESC]);
     }
 }

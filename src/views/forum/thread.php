@@ -192,7 +192,7 @@ if ($thread->locked) {
                 <?php $form = ActiveForm::begin(['id' => 'new-quick-post-form', 'action' => ['post', 'cid' => $thread->forum->category->id, 'fid' => $thread->forum->id, 'tid' => $thread->id]]); ?>
                     <div class="row">
                         <div class="col-sm-12">
-                            <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::className()) ?>
+                            <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::class) ?>
                         </div>
                     </div>
 <?php if (!$thread->subscription): ?>

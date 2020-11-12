@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => 'datetime'
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{view}' . (!Podium::getInstance()->user->isGuest ? ' {pm}' : ''),
             'buttons' => [
                 'view' => function($url, $model) {

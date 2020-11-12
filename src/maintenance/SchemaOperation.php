@@ -60,7 +60,7 @@ class SchemaOperation extends Component
     public function init()
     {
         parent::init();
-        $this->db = Instance::ensure($this->module->db, Connection::className());
+        $this->db = Instance::ensure($this->module->db, Connection::class);
         if ($this->db->driverName === 'mysql') {
             $this->tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }

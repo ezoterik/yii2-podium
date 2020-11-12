@@ -52,7 +52,7 @@ $author = User::findMe();
                 <?php $form = ActiveForm::begin(['id' => 'new-post-form', 'action' => ['post', 'cid' => $thread->forum->category->id, 'fid' => $thread->forum->id, 'tid' => $thread->id]]); ?>
                     <div class="row">
                         <div class="col-sm-12">
-                            <?= $form->field($model, 'content')->label(false)->widget(EditorFull::className()) ?>
+                            <?= $form->field($model, 'content')->label(false)->widget(EditorFull::class) ?>
                         </div>
                     </div>
                     <div class="row">

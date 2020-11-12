@@ -48,7 +48,7 @@ $loggedId = User::loggedId();
             <div class="row">
                 <div class="col-md-3 text-right"><p class="form-control-static"><?= Yii::t('podium/view', 'Message Content') ?></p></div>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::className()) ?>
+                    <?= $form->field($model, 'content')->label(false)->widget(EditorBasic::class) ?>
                 </div>
             </div>
             <div class="row">

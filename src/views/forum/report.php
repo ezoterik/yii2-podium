@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-sm-12">
                             <?= $form->field($model, 'content')
                                 ->label(Yii::t('podium/view', 'Complaint'))
-                                ->widget(EditorBasic::className()) ?>
+                                ->widget(EditorBasic::class) ?>
                         </div>
                     </div>
                 </div>

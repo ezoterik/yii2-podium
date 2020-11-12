@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <?= $form->field($model, 'post')->label(false)->widget(EditorFull::className()); ?>
+                            <?= $form->field($model, 'post')->label(false)->widget(EditorFull::class); ?>
                         </div>
                     </div>
                     <div class="row">

@@ -67,7 +67,7 @@ abstract class UserActiveRecord extends ActiveRecord implements IdentityInterfac
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
             [
                 'class' => Podium::getInstance()->slugGenerator,
                 'attribute' => 'username',
@@ -251,7 +251,7 @@ abstract class UserActiveRecord extends ActiveRecord implements IdentityInterfac
      */
     public function getActivity()
     {
-        return $this->hasOne(Activity::className(), ['user_id' => 'id']);
+        return $this->hasOne(Activity::class, ['user_id' => 'id']);
     }
 
     /**
@@ -261,7 +261,7 @@ abstract class UserActiveRecord extends ActiveRecord implements IdentityInterfac
      */
     public function getFriends()
     {
-        return $this->hasMany(static::className(), ['id' => 'friend_id'])->viaTable('{{%podium_user_friend}}', ['user_id' => 'id']);
+        return $this->hasMany(static::class, ['id' => 'friend_id'])->viaTable('{{%podium_user_friend}}', ['user_id' => 'id']);
     }
 
     /**
@@ -270,7 +270,7 @@ abstract class UserActiveRecord extends ActiveRecord implements IdentityInterfac
      */
     public function getMeta()
     {
-        return $this->hasOne(Meta::className(), ['user_id' => 'id']);
+        return $this->hasOne(Meta::class, ['user_id' => 'id']);
     }
 
     /**
@@ -280,7 +280,7 @@ abstract class UserActiveRecord extends ActiveRecord implements IdentityInterfac
      */
     public function getMods()
     {
-        return $this->hasMany(Mod::className(), ['user_id' => 'id']);
+        return $this->hasMany(Mod::class, ['user_id' => 'id']);
     }
 
     /**

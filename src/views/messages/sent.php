@@ -64,7 +64,7 @@ $this->registerJs("$('#podiumModalDelete').on('show.bs.modal', function(e) { var
             }
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{view-sent} {delete-sent}',
             'buttons' => [
                 'view-sent' => function ($url) {

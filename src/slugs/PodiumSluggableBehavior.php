@@ -16,7 +16,7 @@ use yii\behaviors\SluggableBehavior;
  * 'modules' => [
  *    'podium' => [
  *       'class' => 'bizley\podium\Podium',
- *          'slugGenerator' => MyPodiumSlugGenerator::className(),
+ *          'slugGenerator' => MyPodiumSlugGenerator::class,
  * ```
  *
  * and then create a class:

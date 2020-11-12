@@ -17,14 +17,14 @@ use yii\helpers\HtmlPurifier;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $sender_id
+ * @property int $id
+ * @property int $sender_id
  * @property string $topic
  * @property string $content
- * @property integer $replyto
- * @property integer $sender_status
- * @property integer $updated_at
- * @property integer $created_at
+ * @property int $replyto
+ * @property int $sender_status
+ * @property int $updated_at
+ * @property int $created_at
  */
 class MessageActiveRecord extends ActiveRecord
 {
@@ -66,7 +66,7 @@ class MessageActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**
@@ -147,7 +147,7 @@ class MessageActiveRecord extends ActiveRecord
      */
     public function getSender()
     {
-        return $this->hasOne(User::className(), ['id' => 'sender_id']);
+        return $this->hasOne(User::class, ['id' => 'sender_id']);
     }
 
     /**
@@ -156,7 +156,7 @@ class MessageActiveRecord extends ActiveRecord
      */
     public function getMessageReceivers()
     {
-        return $this->hasMany(MessageReceiver::className(), ['message_id' => 'id']);
+        return $this->hasMany(MessageReceiver::class, ['message_id' => 'id']);
     }
 
     /**
@@ -165,6 +165,6 @@ class MessageActiveRecord extends ActiveRecord
      */
     public function getReply()
     {
-        return $this->hasOne(static::className(), ['id' => 'replyto']);
+        return $this->hasOne(static::class, ['id' => 'replyto']);
     }
 }

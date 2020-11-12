@@ -14,15 +14,15 @@ use bizley\podium\slugs\PodiumSluggableBehavior;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property string $keywords
  * @property string $description
- * @property integer $visible
- * @property integer $sort
- * @property integer $updated_at
- * @property integer $created_at
+ * @property int $visible
+ * @property int $sort
+ * @property int $updated_at
+ * @property int $created_at
  */
 class CategoryActiveRecord extends ActiveRecord
 {
@@ -40,7 +40,7 @@ class CategoryActiveRecord extends ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
             [
                 'class' => Podium::getInstance()->slugGenerator,
                 'attribute' => 'name',

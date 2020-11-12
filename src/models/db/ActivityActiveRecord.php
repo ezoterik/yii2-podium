@@ -13,14 +13,14 @@ use yii\db\ActiveQuery;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $user_id
+ * @property int $id
+ * @property int $user_id
  * @property string $username
- * @property integer $user_role
+ * @property int $user_role
  * @property string $url
  * @property string $ip
- * @property integer $created_at
- * @property integer $updated_at
+ * @property int $created_at
+ * @property int $updated_at
  *
  * @property User $user
  */
@@ -39,7 +39,7 @@ class ActivityActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**
@@ -48,6 +48,6 @@ class ActivityActiveRecord extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

@@ -66,7 +66,7 @@ $loggedId = User::loggedId();
             },
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{view} {pm} {ban} {delete}',
             'buttons' => [
                 'view' => function($url) {

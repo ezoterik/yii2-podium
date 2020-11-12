@@ -99,7 +99,7 @@ class User extends UserActiveRecord
         ];
 
         if (Podium::getInstance()->podiumConfig->get('recaptcha_sitekey') !== '' && Podium::getInstance()->podiumConfig->get('recaptcha_secretkey') !== '') {
-            $rules[] = ['captcha', ReCaptchaValidator::className(), 'secret' => Podium::getInstance()->podiumConfig->get('recaptcha_secretkey')];
+            $rules[] = ['captcha', ReCaptchaValidator::class, 'secret' => Podium::getInstance()->podiumConfig->get('recaptcha_secretkey')];
         } else {
             $rules[] = ['captcha', 'captcha', 'captchaAction' => Podium::getInstance()->id . '/account/captcha'];
         }

@@ -11,15 +11,15 @@ use yii\behaviors\TimestampBehavior;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $user_id
+ * @property int $id
+ * @property int $user_id
  * @property string $email
  * @property string $subject
  * @property string $content
- * @property integer $status
- * @property integer $attempt
- * @property integer $created_at
- * @property integer $updated_at
+ * @property int $status
+ * @property int $attempt
+ * @property int $created_at
+ * @property int $updated_at
  */
 class EmailActiveRecord extends ActiveRecord
 {
@@ -43,7 +43,7 @@ class EmailActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**

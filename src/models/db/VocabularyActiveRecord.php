@@ -58,7 +58,7 @@ class VocabularyActiveRecord extends ActiveRecord
      */
     public function getThread()
     {
-        return $this->hasOne(Thread::className(), ['id' => 'thread_id']);
+        return $this->hasOne(Thread::class, ['id' => 'thread_id']);
     }
 
     /**
@@ -67,7 +67,7 @@ class VocabularyActiveRecord extends ActiveRecord
      */
     public function getPostData()
     {
-        return $this->hasOne(Post::className(), ['id' => 'post_id']);
+        return $this->hasOne(Post::class, ['id' => 'post_id']);
     }
 
     /**
@@ -76,6 +76,6 @@ class VocabularyActiveRecord extends ActiveRecord
      */
     public function getPosts()
     {
-        return $this->hasMany(Post::className(), ['id' => 'post_id'])->viaTable('{{%podium_vocabulary_junction}}', ['word_id' => 'id']);
+        return $this->hasMany(Post::class, ['id' => 'post_id'])->viaTable('{{%podium_vocabulary_junction}}', ['word_id' => 'id']);
     }
 }

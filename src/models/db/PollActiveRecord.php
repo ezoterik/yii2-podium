@@ -58,7 +58,7 @@ class PollActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**
@@ -115,7 +115,7 @@ class PollActiveRecord extends ActiveRecord
      */
     public function getThread()
     {
-        return $this->hasOne(Thread::className(), ['id' => 'thread_id']);
+        return $this->hasOne(Thread::class, ['id' => 'thread_id']);
     }
 
     /**
@@ -124,7 +124,7 @@ class PollActiveRecord extends ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasOne(User::class, ['id' => 'author_id']);
     }
 
     /**
@@ -133,6 +133,6 @@ class PollActiveRecord extends ActiveRecord
      */
     public function getAnswers()
     {
-        return $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
+        return $this->hasMany(PollAnswer::class, ['poll_id' => 'id']);
     }
 }

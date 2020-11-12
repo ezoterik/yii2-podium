@@ -99,7 +99,7 @@ class ThreadActiveRecord extends ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
             [
                 'class' => Podium::getInstance()->slugGenerator,
                 'attribute' => 'name',
@@ -182,7 +182,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getForum()
     {
-        return $this->hasOne(Forum::className(), ['id' => 'forum_id']);
+        return $this->hasOne(Forum::class, ['id' => 'forum_id']);
     }
 
     /**
@@ -192,7 +192,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getPoll()
     {
-        return $this->hasOne(Poll::className(), ['thread_id' => 'id']);
+        return $this->hasOne(Poll::class, ['thread_id' => 'id']);
     }
 
     /**
@@ -201,7 +201,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getUserView()
     {
-        return $this->hasOne(ThreadView::className(), ['thread_id' => 'id'])->where(['user_id' => User::loggedId()]);
+        return $this->hasOne(ThreadView::class, ['thread_id' => 'id'])->where(['user_id' => User::loggedId()]);
     }
 
     /**
@@ -210,7 +210,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getThreadView()
     {
-        return $this->hasMany(ThreadView::className(), ['thread_id' => 'id']);
+        return $this->hasMany(ThreadView::class, ['thread_id' => 'id']);
     }
 
     /**
@@ -219,7 +219,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getSubscription()
     {
-        return $this->hasOne(Subscription::className(), ['thread_id' => 'id'])->where(['user_id' => User::loggedId()]);
+        return $this->hasOne(Subscription::class, ['thread_id' => 'id'])->where(['user_id' => User::loggedId()]);
     }
 
     /**
@@ -228,7 +228,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getLatest()
     {
-        return $this->hasOne(Post::className(), ['thread_id' => 'id'])->orderBy(['id' => SORT_DESC]);
+        return $this->hasOne(Post::class, ['thread_id' => 'id'])->orderBy(['id' => SORT_DESC]);
     }
 
     /**
@@ -247,7 +247,7 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getPostData()
     {
-        return $this->hasOne(Post::className(), ['thread_id' => 'id'])->orderBy(['id' => SORT_ASC]);
+        return $this->hasOne(Post::class, ['thread_id' => 'id'])->orderBy(['id' => SORT_ASC]);
     }
 
     /**
@@ -257,7 +257,7 @@ class ThreadActiveRecord extends ActiveRecord
     public function getFirstNewNotSeen()
     {
         return $this
-                ->hasOne(Post::className(), ['thread_id' => 'id'])
+                ->hasOne(Post::class, ['thread_id' => 'id'])
                 ->where(['>', 'created_at', $this->userView ? $this->userView->new_last_seen : 0])
                 ->orderBy(['id' => SORT_ASC]);
     }
@@ -269,7 +269,7 @@ class ThreadActiveRecord extends ActiveRecord
     public function getFirstEditedNotSeen()
     {
         return $this
-                ->hasOne(Post::className(), ['thread_id' => 'id'])
+                ->hasOne(Post::class, ['thread_id' => 'id'])
                 ->where(['>', 'edited_at', $this->userView ? $this->userView->edited_last_seen : 0])
                 ->orderBy(['id' => SORT_ASC]);
     }
@@ -280,6 +280,6 @@ class ThreadActiveRecord extends ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasOne(User::class, ['id' => 'author_id']);
     }
 }

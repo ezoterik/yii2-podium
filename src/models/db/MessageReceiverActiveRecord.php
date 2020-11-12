@@ -14,12 +14,12 @@ use yii\db\ActiveQuery;
  * @author Paweł Bizley Brzozowski <pawel@positive.codes>
  * @since 0.6
  *
- * @property integer $id
- * @property integer $message_id
- * @property integer $receiver_id
- * @property integer $receiver_status
- * @property integer $updated_at
- * @property integer $created_at
+ * @property int $id
+ * @property int $message_id
+ * @property int $receiver_id
+ * @property int $receiver_status
+ * @property int $updated_at
+ * @property int $created_at
  */
 class MessageReceiverActiveRecord extends ActiveRecord
 {
@@ -53,7 +53,7 @@ class MessageReceiverActiveRecord extends ActiveRecord
      */
     public function behaviors()
     {
-        return [TimestampBehavior::className()];
+        return [TimestampBehavior::class];
     }
 
     /**
@@ -95,7 +95,7 @@ class MessageReceiverActiveRecord extends ActiveRecord
      */
     public function getMessage()
     {
-        return $this->hasOne(Message::className(), ['id' => 'message_id']);
+        return $this->hasOne(Message::class, ['id' => 'message_id']);
     }
 
     /**
@@ -104,6 +104,6 @@ class MessageReceiverActiveRecord extends ActiveRecord
      */
     public function getReceiver()
     {
-        return $this->hasOne(User::className(), ['id' => 'receiver_id']);
+        return $this->hasOne(User::class, ['id' => 'receiver_id']);
     }
 }
